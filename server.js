@@ -1,8 +1,8 @@
 const app = require("./src/app");
-const { port } = require("./src/configs/configs");
+const config = require("./src/configs/configs");
 
-const server = app.listen(port, () => {
-  console.log("Server start with " + port);
+const server = app.listen(config.app.port, () => {
+  console.log("Server start with " + config.app.port);
 });
 
 process.on("SIGINT", () => {

@@ -8,7 +8,8 @@ require("dotenv").config();
 // checkOverload();
 //init middlewares
 app.use(morgan("dev"));
-
+app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 //  morgan have 5 way:
 //  - dev
 //  - combined
@@ -23,12 +24,7 @@ app.use(compression()); // nén request để res nhẹ hơn
 require("./dbs/init.mongodb");
 
 //init routes
-app.get("/", (req, res, next) => {
-  return res.status(200).json({
-    message: "Hello world",
-  });
-});
-
+app.use("", require("./routes"));
 //handles err
 
 module.exports = app;
